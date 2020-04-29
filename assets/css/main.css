@@ -67,6 +67,10 @@ body {
     margin-top: 25px;
 }
 
+.day-holiday {
+    margin-top: 10px;
+}
+
 .main-side h4 {
     font-size: 12px;
     font-weight: 400;

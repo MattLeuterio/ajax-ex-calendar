@@ -117,25 +117,30 @@ function printHoliday(date) {
         success: function(res) {
             var holidays = res.response;
 
-
-            for (var i = 0; i < holidays.length; i++) {
-                var thisHoliday = holidays[i];
-
-                var listItem = $('li[data-complete-date="' + thisHoliday.date + '"]');
-
-                if(listItem) {
-                    listItem.addClass('holiday');
-                    //listItem.text( listItem.text() + ' - ' + thisHoliday.name );
-                    
-                    // backup holiday già printate
-                    var backupHoliday = $('.main-side .day-holiday').html();
-                    // Setto newHoliday
-                    var newHoliday = '<h4>' + listItem.text() + ' - ' + thisHoliday.name + '</h4>';
-                    // Aggiungo le holiday nel backup più le nuove
-                    $('.main-side .day-holiday').html(backupHoliday + newHoliday);
-                    
+            if(holidays.length != 0) {
+                for (var i = 0; i < holidays.length; i++) {
+                    var thisHoliday = holidays[i];
+    
+                    var listItem = $('li[data-complete-date="' + thisHoliday.date + '"]');
+    
+                    if(listItem) {
+                        listItem.addClass('holiday');
+                        //listItem.text( listItem.text() + ' - ' + thisHoliday.name );
+                        
+                        // backup holiday già printate
+                        var backupHoliday = $('.main-side .day-holiday').html();
+                        // Setto newHoliday
+                        var newHoliday = '<h4>' + listItem.text() + ' - ' + thisHoliday.name + '</h4>';
+                        // Aggiungo le holiday nel backup più le nuove
+                        $('.main-side .day-holiday').html(backupHoliday + newHoliday);
+                        
+                    }
                 }
+            } else {
+                $('.main-side .day-holiday').html('We are sorry &#128533 , there are no holidays in ' + date.format('MMMM'));
             }
+
+            
         },
         error: function() {
             console.log('Errore chiamata festività'); 
