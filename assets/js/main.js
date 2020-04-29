@@ -9,7 +9,8 @@ $(document).ready(function () {
 
     // Punto di partenza
     var baseMonth = moment('2018-01-01'); 
-
+    console.log(baseMonth);
+    
     // Init Hndlenars
     var source = $('#day-template').html();
     var template = Handlebars.compile(source);
@@ -20,7 +21,46 @@ $(document).ready(function () {
     // ottieni festività mese corrente
     printHoliday(baseMonth);
 
-   
+     // cambiare mese 
+
+     // Un mese avanti
+     $('.right').click( function(){
+
+        if($('.month').attr('data-this-date') !=  '2018-12-01') {
+
+            // setto variabile con il mese successivo
+            var monthNext = baseMonth.add(1, 'M');
+
+            // reset dati nel DOM
+            $('.month-list').html('');
+            $('.main-side .day-holiday').html('')
+
+            // Genero nuovi dat e li printo nel DOM
+            printMonth(template, monthNext)
+            printHoliday(monthNext)
+        }
+
+     });
+
+     //Un mese indietro
+     $('.left').click( function(){
+
+        if($('.month').attr('data-this-date') !=  '2018-01-01') {
+
+            // setto variabile con il mese precedente
+            var monthPrev = baseMonth.subtract(1, 'M');
+
+            // reset dati nel DOM
+            $('.month-list').html('');
+            $('.main-side .day-holiday').html('')
+
+            // Genero nuovi dat e li printo nel DOM
+            printMonth(template, monthPrev)
+            printHoliday(monthPrev)
+        }
+
+     });
+
 
 }); // <-- End doc ready
 
@@ -92,8 +132,7 @@ function printHoliday(date) {
                     // Setto newHoliday
                     var newHoliday = '<h4>' + listItem.text() + ' - ' + thisHoliday.name + '</h4>';
                     // Aggiungo le holiday nel backup più le nuove
-                    $('.main-side .day-holiday').html(backupHoliday + newHoliday);    
-                    console.log($('.main-side .day-holiday').html());
+                    $('.main-side .day-holiday').html(backupHoliday + newHoliday);
                     
                 }
             }
@@ -104,3 +143,12 @@ function printHoliday(date) {
     });
 }
 
+// cambiare mese con il controller
+
+function nextMonth(baseMonth, template, date) {
+    sbaseMonth.add(1, 'months');
+    $('.month-list').html('')
+    printMonth(template, date);
+
+    printHoliday(date);
+}

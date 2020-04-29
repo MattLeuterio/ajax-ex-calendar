@@ -108,6 +108,7 @@ body {
 
 .month-list {
     width: 462px;
+    height: 290px;
     flex-wrap: wrap;
 }
 
