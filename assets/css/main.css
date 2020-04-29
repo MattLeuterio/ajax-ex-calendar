@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 100vw;
+    height: 100vh;
+    background: #cee3de;
+    font-family: 'Roboto', sans-serif;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url('https://source.unsplash.com/1200x800/?nature,city'); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* utility */
+
+.u_flex {
+    display: flex;
+}
+
+.u_flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.font-serif {
+    font-family: 'Roboto Slab', serif;
+}
+
+/* app */
+
+.app {
+    width: 1000px;
+    height: 700px;
+    align-items: center;
+    border-radius: 35px;
+    background: #fff;
+    opacity: 0.95;
+}
+
+.info-sidebar {
+    width: 30%;
+    height: 50%;
+    padding-left: 50px;
+    color: #303941;
+}
+
+.info-sidebar .header-side {
+    
+}
+
+.info-sidebar .header-side h1 {
+    font-size: 30px;
+    color: #96a0ad;
+}
+
+.info-sidebar .header-side h2 {
+    font-size: 50px;
+}
+
+.main-side {
+    margin-top: 25px;
+}
+
+.main-side h4 {
+    font-size: 12px;
+    font-weight: 400;
+    background: #f44336;
+    color: #fff;
+    margin: 5px 0;
+    padding: 5px 10px;
+    width: fit-content;
+    border-radius: 30px;
+}
+
+.controller-calendar {
+    margin-bottom: 10px;
+}
+
+.control {
+    font-size: 12px;
+    /* background: #303941; */
+    padding: 1px 95px;
+    color: #303941;
+    border-radius: 125px;
+    border: 1px solid #303941;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.control:hover {
+    background: #303941;
+    color: #fff;
+}
+
+.container {
+    flex-grow: 1;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    /* background: lightpink; */
+}
+
+.month-list {
+    width: 462px;
+    flex-wrap: wrap;
+}
+
+li.day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #303941;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 12px;
+    color: #303941;
+}
+
+
+li.holiday {
+    color: #ffffff;
+    border: 1px solid #F44336;
+    background: #F44336;
+}
+

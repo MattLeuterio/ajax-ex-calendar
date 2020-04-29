@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Google Font | Roboto & Roboto Slab-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'/>
+</head>
+
+<body class="u_flex">
+
+<div class="app u_flex">
+    <sidebar class="info-sidebar u_flexColumn">
+        <header class="header-side">
+            <h1 class="month"></h1>
+            <h2></h2>
+        </header>
+        <main class="main-side">
+            <h3>Holidays</h3>
+            <div class="day-holiday font-serif">
+            </div>
+        </main>
+    </sidebar>
+    
+    <div class="container u_flexColumn">
+        <div class="controller-calendar">
+            <span class="control left"><i class="fas fa-angle-double-left"></i></span>
+            <span class="control right"><i class="fas fa-angle-double-right"></i></span>
+        </div>
+        <ul class="month-list u_flex"></ul>
+    </div>
+</div>
+    
+
+
+    <!-- TEMPLATES HANDLEBARS -->
+    <script id="day-template" type="text/x-handlebars-template">
+        <li class="{{ class }}" data-complete-date="{{ completeDate }}">
+            {{ day }}
+        </li>
+    </script>
+
+
+    <!-- JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
