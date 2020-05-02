@@ -11,10 +11,6 @@ body {
     font-family: 'Roboto', sans-serif;
     justify-content: center;
     align-items: center;
-    /* background-image: url('https://source.unsplash.com/1200x800/?nature,city'); */
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 
 /* utility */
@@ -116,16 +112,44 @@ body {
     flex-wrap: wrap;
 }
 
-li.day {
+.days-list {
+    width: 462px;
+    justify-content: center;
+}
+
+.days-list h3 {
+    font-size: 14px;
+}
+
+.days-list li {
+    margin: 0 13px 0;
+    color: #394249;
+}
+
+li {
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    border: 1px solid #303941;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
     margin: 12px;
+}
+
+.days-list li:first-child {
+    color: #F44336;
+}
+
+li.blank { 
+    border: 1px solid rgb(229, 229, 229);
+    background: rgb(244, 244, 244);
+    border-radius: 50%;
+    color: #8f8f8f
+}
+
+li.day {
+    border: 1px solid #303941;;
+    border-radius: 50%;
     color: #303941;
 }
 

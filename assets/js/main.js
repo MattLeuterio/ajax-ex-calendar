@@ -9,7 +9,6 @@ $(document).ready(function () {
 
     // Punto di partenza
     var baseMonth = moment('2018-01-01'); 
-    console.log(baseMonth);
     
     // Init Hndlenars
     var source = $('#day-template').html();
@@ -74,6 +73,62 @@ function printMonth(template, date) {
     // numero giorni nel mese
     var daysInMonth = date.daysInMonth();
 
+    // numero primo giorno del mese
+    var numFirstDay = date.day();
+
+    // prendo il mese precedente al corrente
+    var getMonthPrev = date.get('month') - 1;
+    
+    // creo un oggetto momento con il mese precedente
+    var prevMonth = moment({
+        y: date.year(),
+        M: getMonthPrev
+    })
+
+    // leggo quanti giorni contiene il mese precedente
+    var prevMonthDays = prevMonth.daysInMonth()
+
+    // a questi giorni aggiungo sottraggo il numero nella settimana ed aggiungo 1
+    // così setto da dove far partire la numerazione ed ho la variabile da inserire come valore nei blankBoxes
+    prevMonthDays = (prevMonthDays - numFirstDay) + 1;
+    
+
+
+    // se è il primo giorno è diverso da 0 
+    if (numFirstDay != 0) {
+
+        // crea un box vuoto fino ad arrivare al numero del primo giorno del mese
+        for(var x = 0; x < numFirstDay; x++) {
+
+            if (date.month() != 0) {
+                
+                var blankBoxes = {
+                    class: 'blank',
+                    day: prevMonthDays
+                }
+    
+                prevMonthDays = prevMonthDays + 1;
+    
+                // stampa tramite il template i box vuoti creati
+                var htmlBlankBoxes = template(blankBoxes);
+                $('.month-list').append(htmlBlankBoxes);
+            } else {
+                var blankBoxes = {
+                    class: 'blank',
+                    day: 31
+                }
+    
+                    // stampa tramite il template i box vuoti creati
+                    var htmlBlankBoxes = template(blankBoxes);
+                    $('.month-list').append(htmlBlankBoxes);
+            }
+           
+            }
+
+        }
+
+    
+    
     //  setta header
     $('.info-sidebar h1').html( date.format('MMMM') );
     $('.info-sidebar h2').html( date.format('YYYY') );
@@ -151,9 +206,8 @@ function printHoliday(date) {
 // cambiare mese con il controller
 
 function nextMonth(baseMonth, template, date) {
-    sbaseMonth.add(1, 'months');
+    baseMonth.add(1, 'months');
     $('.month-list').html('')
     printMonth(template, date);
-
     printHoliday(date);
 }
